@@ -12,7 +12,7 @@ def rand_slug():
 
 class Category(models.Model):
     name = models.CharField("Category", max_length=250, db_index=True)
-    parent = models.ForeignKey('Self', on_delete=models.CASCADE, related_name='children', blank=True, null=True)
+    parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name='children', blank=True, null=True)
     slug = models.SlugField('URL', max_length=250, unique=True, null=False, editable=True)
     created_at = models.DateTimeField('Creation date', auto_now_add=True)
 
@@ -59,6 +59,7 @@ class Product(models.Model):
 
     # def get_absolute_url(self):
     #     return reverse("shop:product-detail", args=[str(self.slug)])
+
 
 class ProductManager(models.Manager):
     def get_queryset(self):

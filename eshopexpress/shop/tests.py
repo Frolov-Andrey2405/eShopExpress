@@ -1,8 +1,8 @@
-from django.test import TestCase
 from django.core.files.uploadedfile import SimpleUploadedFile
+from django.test import TestCase
 from django.urls import reverse
 
-from .models import Product, Category, ProductProxy
+from .models import Category, Product, ProductProxy
 
 
 class ProductViewTest(TestCase):

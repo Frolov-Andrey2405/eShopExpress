@@ -23,7 +23,7 @@ if response.status_code == 200:
                 category = Category.objects.get(name=category_name)
             except ObjectDoesNotExist:
                 category = Category.objects.create(name=category_name)
-    
+
             product_slug = slugify(item['title'])
 
             Product.objects.create(

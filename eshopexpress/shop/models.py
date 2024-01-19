@@ -7,13 +7,20 @@ from django.utils.text import slugify
 
 
 def rand_slug():
-    return ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(3))
+    return ''.join(
+        random.choice(string.ascii_lowercase + string.digits) for _ in range(3)
+    )
 
 
 class Category(models.Model):
     name = models.CharField("Category", max_length=250, db_index=True)
-    parent = models.ForeignKey('self', on_delete=models.CASCADE, related_name='children', blank=True, null=True)
-    slug = models.SlugField('URL', max_length=250, unique=True, null=False, editable=True)
+    parent = models.ForeignKey(
+        'self', on_delete=models.CASCADE,
+        related_name='children', blank=True, null=True
+    )
+    slug = models.SlugField(
+        'URL', max_length=250, unique=True, null=False, editable=True
+    )
     created_at = models.DateTimeField('Creation date', auto_now_add=True)
 
     class Meta:
@@ -39,12 +46,16 @@ class Category(models.Model):
 
 
 class Product(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
+    category = models.ForeignKey(
+        Category, on_delete=models.CASCADE, related_name='products'
+    )
     title = models.CharField("Title", max_length=250)
     brand = models.CharField("Brand", max_length=250)
     description = models.TextField("Description", blank=True)
     slug = models.SlugField('URL', max_length=250)
-    price = models.DecimalField("Price", max_digits=7, decimal_places=2, default=99.99)
+    price = models.DecimalField(
+        "Price", max_digits=7, decimal_places=2, default=99.99
+    )
     image = models.URLField("Image", blank=True)
     # image = models.ImageField("Image", upload_to='products/products/%Y/%m/%d')
     available = models.BooleanField("Availability", default=True)
@@ -64,7 +75,8 @@ class Product(models.Model):
 
 class ProductManager(models.Manager):
     def get_queryset(self):
-        return super(ProductManager, self).get_queryset().filter(available=True)
+        return super(
+            ProductManager, self).get_queryset().filter(available=True)
 
 
 class ProductProxy(Product):

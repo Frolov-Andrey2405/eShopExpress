@@ -39,3 +39,6 @@ class Cart():
 
         self.cart[product_id]['qty'] = quantity
         self.session.modified = True
+
+    def get_total_price(self):
+        return sum(Decimal(item['price']) * item['qty'] for item in self.cart.values())

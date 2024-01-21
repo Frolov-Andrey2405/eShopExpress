@@ -1,3 +1,21 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def shipping(request):
+    ...
+
+
+def checkout(request):
+    ...
+
+
+def complete_order(request):
+    ...
+
+
+def payment_success(request):
+    ...
+
+
+def payment_failed(request):
+    ...

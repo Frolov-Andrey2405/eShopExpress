@@ -1,12 +1,11 @@
 from django.contrib.auth.decorators import login_required
+from django.http import JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 
 from cart.cart import Cart
 
 from .forms import ShippingAddressForm
 from .models import Order, OrderItem, ShippingAddress
-
-from django.http import JsonResponse
 
 
 @login_required(login_url='account:login')
@@ -34,7 +33,10 @@ def checkout(request):
         shipping_address = get_object_or_404(
             ShippingAddress, user=request.user)
         if shipping_address:
-            return render(request, 'payment/checkout.html', {'shipping_address': shipping_address})
+            return render(
+                request, 'payment/checkout.html',
+                {'shipping_address': shipping_address}
+            )
     return render(request, 'payment/checkout.html')
 
 

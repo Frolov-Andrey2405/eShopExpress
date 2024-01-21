@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            function showErrorPopup(message) {
+                var popup = $('<div class="error-popup">' + message + '</div>');
+                popup.css({
+                    'position': 'fixed',
+                    'top': '50%',
+                    'left': '50%',
+                    'transform': 'translate(-50%, -50%)',
+                    'padding': '20px',
+                    'background-color': '#ffcccc',
+                    'border': '1px solid #ff6666',
+                    'border-radius': '5px',
+                    'box-shadow': '0 0 10px rgba(0, 0, 0, 0.5)',
+                    'z-index': '9999',
+                });
+                $('body').append(popup);
+                setTimeout(function () {
+                    popup.remove();
+                    window.location.href = "{% url 'shop:products' %}";
+                }, 5000);
+            }
+            showErrorPopup('Payment failed. Please try again later.');
+        });
+    </script>
+{% endblock %}

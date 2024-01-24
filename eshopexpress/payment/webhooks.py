@@ -4,6 +4,7 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import Order
+from .tasks import send_order_confirmation
 
 
 @csrf_exempt
@@ -28,15 +29,24 @@ def stripe_webhook(request):
         session = event['data']['object']
 
         # Fulfill the purchase...
-        if session.mode ==  "payment" and session.payment_status == "paid":
+        if session.mode == "payment" and session.payment_status == "paid":
             try:
                 order_id = session.client_reference_id
             except Order.DoesNotExist:
                 return HttpResponse(status=404)
 
-            # send_order_confirmation.delay(order_id)
+            send_order_confirmation.delay(order_id)
             order = Order.objects.get(id=order_id)
             order.paid = True
             order.save()
 
     return HttpResponse(status=200)
+
+
+def get_client_ip(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip

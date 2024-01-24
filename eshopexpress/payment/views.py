@@ -1,11 +1,12 @@
 from decimal import Decimal
 
 import stripe
-from cart.cart import Cart
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
+
+from cart.cart import Cart
 
 from .forms import ShippingAddressForm
 from .models import Order, OrderItem, ShippingAddress

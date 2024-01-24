@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'django_email_verification',
+    'django_google_fonts',
 
     # Apps
     'shop.apps.ShopConfig',
@@ -49,7 +50,7 @@ ROOT_URLCONF = 'eshopexpress.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'eshopexpress' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -103,6 +104,7 @@ APPEND_SLASH = True
 # Static files
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'static'
+STATICFILES_DIRS = [BASE_DIR / 'eshopexpress' / 'static',]
 
 # Media files
 MEDIA_URL = '/media/'
@@ -165,3 +167,7 @@ EMAIL_USE_TLS = True
 STRIPE_PUBLISHABLE_KEY = env('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
 STRIPE_API_VERSION = env('STRIPE_API_VERSION')
+
+# Google Fonts
+GOOGLE_FONTS = ['Montserrat:wght@300,400', 'Roboto']
+GOOGLE_FONTS_DIR = BASE_DIR / 'static'

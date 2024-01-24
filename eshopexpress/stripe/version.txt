@@ -1,0 +1,2 @@
+Version: 1.19.2_windows_i386
+Link: https://github.com/stripe/stripe-cli/releases/tag/v1.19.2

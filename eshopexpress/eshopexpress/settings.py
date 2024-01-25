@@ -1,3 +1,4 @@
+from datetime import timedelta
 from pathlib import Path
 
 import environ
@@ -12,7 +13,7 @@ SECRET_KEY = 'django-insecure-)n3ns9kd$-273+t$@sx51*q3@4i5an$in9c_lr1u@97%qoa@=i
 
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -32,6 +33,9 @@ INSTALLED_APPS = [
     'django_celery_beat',
     'django_celery_results',
     'django_htmx',
+    'rest_framework',
+    'djoser',
+    'drf_yasg',
 
     # Apps
     'shop.apps.ShopConfig',
@@ -202,3 +206,30 @@ CELERY_BEAT_SCHEDULER = 'django_celery_beat.schedulers.DatabaseScheduler'
 #         "schedule": crontab(minute="*/1"),
 #     },
 # }
+
+# REST_FRAMEWORK
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+    "DEFAULT_PERMISSION_CLASSES": [
+        "api.permissions.IsAdminOrReadOnly",
+    ],
+    "DEFAULT_PAGINATION_CLASS": "api.pagination.StandardResultsSetPagination",
+    "PAGE_SIZE": 15,
+}
+
+# SIMPLE_JWT
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
+
+# DJOSER
+DJOSER = {
+    "LOGIN_FIELD": "email",
+    "SERIALIZERS": {
+        "user_create": "api.serializers.CustomUserCreateSerializer",
+    },
+    'AUTH_HEADER_TYPES': ('JWT',),
+}

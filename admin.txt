@@ -1,3 +1,17 @@
-Username: admin
-Email address: admin123@gmail.com
-Password: admin123
+Django admin:
+    Username: admin
+    Email address: admin123@gmail.com
+    Password: admin123
+
+Django REST framework admin(User List):
+    Email address: admin123@gmail.com
+    Password: admin123
+    Username: admin123
+
+Token Obtain Pair:
+    Username: admin123
+    Password: admin123
+    {
+        "refresh": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcwNjI5NjA3NiwiaWF0IjoxNzA2MjA5Njc2LCJqdGkiOiI1NmUxMzhmNmM2NWQ0MjIwYTgyZTQ2Y2ExYmUzNDE1MiIsInVzZXJfaWQiOjd9.0T934k-O3GdWz9bDJWjrjaZx78IRJHBMO06tWYvzL1Q",
+        "access": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA2MjEzMjc2LCJpYXQiOjE3MDYyMDk2NzYsImp0aSI6IjY5NDMzY2Y2NTEyNTQ1NTBiNWFkZmI5Y2NjZjU3MjNlIiwidXNlcl9pZCI6N30.JtGxXRldvEZynsxnM4CRCmANwL3Jp--Dg0JygtKc8KE"
+    }

@@ -106,7 +106,7 @@ For the convenience of developers, the project provides various console commands
 
 ### Fake Product Generator
 
-The `eshopexpress/shop/management/commands/` directory contains two scripts for generating fake product data for the Django project. It is recommended to read the more detailed documentation provided in the file [Fake Product Generator README](eshopexpress/shop/management/commands/README.md).
+The [eshopexpress/shop/management/commands/](eshopexpress/shop/management/commands/) directory contains two scripts for generating fake product data for the Django project. It is recommended to read the more detailed documentation provided in the file [Fake Product Generator README](eshopexpress/shop/management/commands/README.md).
 
 It is recommended to use these scripts when you need to fill the database with test or demo data. Their use can greatly simplify the process of developing and testing the store functionality.
 

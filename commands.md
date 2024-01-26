@@ -1,58 +1,58 @@
 # Console commands to use
 
-Activate venv:
+**Activate venv:**
 
 ```bash
 .\venv\Scripts\activate
 ```
 
-Django makemigrations, migrate:
+**Django makemigrations, migrate:**
 
 ```bash
 python manage.py makemigrations
 python manage.py migrate
 ```
 
-Django runserver:
+**Django runserver:**
 
 ```bash
 cd .\eshopexpress\
 python.exe .\manage.py runserver
 ```
 
-Freeze:
+**Freeze:**
 
 ```bash
 python -m pip freeze > requirements.txt
 python -m pip install -r requirements.txt
 ```
 
-Redis-server:
+**Redis-server:**
 
 ```bash
 cd .\eshopexpress\redis-x64-3.0.504
 .\redis-server.exe
 ```
 
-Celery worker:
+**Celery worker:**
 
 ```bash
 celery -A eshopexpress worker -l info
 ```
 
-Celery beat:
+**Celery beat:**
 
 ```bash
 celery -A eshopexpress beat -l info
 ```
 
-Celery flower:
+**Celery flower:**
 
 ```bash
 celery -A eshopexpress flower
 ```
 
-Stripe webhook:
+**Stripe webhook:**
 
 ```bash
 cd .\eshopexpress\stripe
